@@ -2,7 +2,7 @@
 
 *The front line on the wire. The physical node in your hand.*
 
-![VIATEXT Logo](../viatext.png)
+![VIATEXT Logo](viatext.png)
 
 This is the firmware and configuration package for ViaText-compatible [https://lilygo.cc/products/lora3](**TTGO LoRa32 V2.1**) boards.  
 It transforms a low-cost ESP32 device into a resilient, autonomous communication node — part of a text-first mesh that doesn’t rely on the cloud, smartphones, or traditional infrastructure.
