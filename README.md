@@ -1,11 +1,11 @@
-# viatext-ttgo-lora32-v21
+# viatext-ttgo-lora32-v2
 
 **Development Notice:** This project is **not production-ready**. It is still in active development, with interfaces, logic, and documentation subject to change.
 
 To clone with submodules:
 
 ```bash
-git clone --recurse-submodules https://github.com/AltGrid/viatext-ttgo-lora32-v21
+git clone --recurse-submodules https://github.com/AltGrid/viatext-ttgo-lora32-v2
 ```
 
 *The front line on the wire. The physical node in your hand.*
@@ -21,7 +21,7 @@ This repo runs on **PlatformIO**, targeting the ESP32/LoRa chipset with a focus 
 
 ## System Role and Identity
 
-`viatext-ttgo-lora32-v21` is a physical, field-deployable node in the ViaText mesh.  
+`viatext-ttgo-lora32-v2` is a physical, field-deployable node in the ViaText mesh.  
 It sends, receives, and relays human-readable packets using the LoRa radio band, optionally augmented by GPS, OLED display, and battery status monitoring.
 
 Each node:
@@ -53,7 +53,7 @@ This hardware is critical in scenarios where standard infrastructure is absent o
 - **Form Factor** — Credit card-sized; supports 3D-printed enclosures.
 
 ### Firmware Scope
-- **Base** — PlatformIO targeting `esp32dev` / `ttgo-lora32-v21`.  
+- **Base** — PlatformIO targeting `esp32dev` / `ttgo-lora32-v2`.  
 - **Core Dependency** — `viatext-core` submodule.  
 - **Dependencies** — `LoRa.h`, `HardwareSerial`, optional `U8g2lib`, `TinyGPS++`.  
 - **CLI/Host Compatibility** — Fully interoperable with `viatext-cli`.
@@ -80,7 +80,7 @@ It **includes the complete `viatext-core` library** as a Git submodule under `ex
 Top-level layout:
 
 ```
-viatext-ttgo-lora32-v21/
+viatext-ttgo-lora32-v2/
 ├── external/viatext-core/       # Core ViaText C++ library (submodule)
 │   ├── AI/                      # AI-assisted docs & blueprints
 │   ├── cli/                     # Command-line wrapper for Linux
@@ -105,9 +105,21 @@ viatext-ttgo-lora32-v21/
 
 This project is designed for **PlatformIO**, which handles toolchain, libraries, and device upload.
 
+### Install PlatformIO on Debian/Ubuntu
 ```bash
-pio run -e ttgo-lora32-v21
-pio run -e ttgo-lora32-v21 -t upload
+sudo apt update
+pip3 install platformio
+```
+
+### Install PlatformIO on Fedora
+```bash
+pip3 install platformio
+```
+
+### Build and Upload Firmware
+```bash
+pio run -e ttgo-lora32-v2
+pio run -e ttgo-lora32-v2 -t upload
 pio device monitor -b 115200
 ```
 

@@ -1,147 +1,488 @@
-# viatext-ttgo-lora32-v21
+.
+├── external
+│   └── viatext-core
+│       ├── AI
+│       │   ├── BLUEPRINTS.md
+│       │   └── README.md
+│       ├── cli
+│       │   ├── main.cpp
+│       │   └── README.md
+│       ├── include
+│       │   └── viatext
+│       │       ├── core.hpp
+│       │       ├── core.md
+│       │       ├── message.hpp
+│       │       ├── message_id.hpp
+│       │       ├── message_id.md
+│       │       ├── message.md
+│       │       ├── package.hpp
+│       │       ├── README.md
+│       │       └── transport
+│       │           ├── README.md
+│       │           ├── transport_base.hpp
+│       │           ├── transport_linux_serial.hpp
+│       │           └── transport_lora_sx127x.hpp
+│       ├── LICENSE
+│       ├── Makefile
+│       ├── README2.md
+│       ├── README.md
+│       ├── src
+│       │   ├── core.cpp
+│       │   └── message_id.cpp
+│       ├── tests
+│       │   ├── test-cli
+│       │   │   └── main.cpp
+│       │   ├── test_core_flows.cpp
+│       │   ├── test_core_policy.cpp
+│       │   ├── test_core_solo.cpp
+│       │   ├── test_core_time.cpp
+│       │   ├── test_main.cpp
+│       │   ├── test-message-id
+│       │   │   └── main.cpp
+│       │   ├── test_message_id.cpp
+│       │   └── test_package_args.cpp
+│       ├── third_party
+│       │   ├── CLI
+│       │   │   └── CLI11.hpp
+│       │   ├── etl
+│       │   │   ├── absolute.h
+│       │   │   ├── algorithm.h
+│       │   │   ├── alignment.h
+│       │   │   ├── array.h
+│       │   │   ├── array_view.h
+│       │   │   ├── array_wrapper.h
+│       │   │   ├── atomic
+│       │   │   │   ├── atomic_arm.h
+│       │   │   │   ├── atomic_clang_sync.h
+│       │   │   │   ├── atomic_gcc_sync.h
+│       │   │   │   └── atomic_std.h
+│       │   │   ├── atomic.h
+│       │   │   ├── base64_decoder.h
+│       │   │   ├── base64_encoder.h
+│       │   │   ├── base64.h
+│       │   │   ├── basic_format_spec.h
+│       │   │   ├── basic_string.h
+│       │   │   ├── basic_string_stream.h
+│       │   │   ├── binary.h
+│       │   │   ├── bip_buffer_spsc_atomic.h
+│       │   │   ├── bit.h
+│       │   │   ├── bitset.h
+│       │   │   ├── bit_stream.h
+│       │   │   ├── bloom_filter.h
+│       │   │   ├── bresenham_line.h
+│       │   │   ├── buffer_descriptors.h
+│       │   │   ├── byte.h
+│       │   │   ├── byte_stream.h
+│       │   │   ├── callback.h
+│       │   │   ├── callback_service.h
+│       │   │   ├── callback_timer_atomic.h
+│       │   │   ├── callback_timer_deferred_locked.h
+│       │   │   ├── callback_timer.h
+│       │   │   ├── callback_timer_interrupt.h
+│       │   │   ├── callback_timer_locked.h
+│       │   │   ├── char_traits.h
+│       │   │   ├── checksum.h
+│       │   │   ├── chrono.h
+│       │   │   ├── circular_buffer.h
+│       │   │   ├── circular_iterator.h
+│       │   │   ├── closure.h
+│       │   │   ├── combinations.h
+│       │   │   ├── compare.h
+│       │   │   ├── constant.h
+│       │   │   ├── const_map.h
+│       │   │   ├── const_multimap.h
+│       │   │   ├── const_multiset.h
+│       │   │   ├── const_set.h
+│       │   │   ├── container.h
+│       │   │   ├── correlation.h
+│       │   │   ├── covariance.h
+│       │   │   ├── crc16_a.h
+│       │   │   ├── crc16_arc.h
+│       │   │   ├── crc16_aug_ccitt.h
+│       │   │   ├── crc16_buypass.h
+│       │   │   ├── crc16_ccitt.h
+│       │   │   ├── crc16_cdma2000.h
+│       │   │   ├── crc16_dds110.h
+│       │   │   ├── crc16_dectr.h
+│       │   │   ├── crc16_dectx.h
+│       │   │   ├── crc16_dnp.h
+│       │   │   ├── crc16_en13757.h
+│       │   │   ├── crc16_genibus.h
+│       │   │   ├── crc16.h
+│       │   │   ├── crc16_kermit.h
+│       │   │   ├── crc16_m17.h
+│       │   │   ├── crc16_maxim.h
+│       │   │   ├── crc16_mcrf4xx.h
+│       │   │   ├── crc16_modbus.h
+│       │   │   ├── crc16_opensafety_a.h
+│       │   │   ├── crc16_opensafety_b.h
+│       │   │   ├── crc16_profibus.h
+│       │   │   ├── crc16_riello.h
+│       │   │   ├── crc16_t10dif.h
+│       │   │   ├── crc16_teledisk.h
+│       │   │   ├── crc16_tms37157.h
+│       │   │   ├── crc16_usb.h
+│       │   │   ├── crc16_x25.h
+│       │   │   ├── crc16_xmodem.h
+│       │   │   ├── crc1.h
+│       │   │   ├── crc32_bzip2.h
+│       │   │   ├── crc32_c.h
+│       │   │   ├── crc32_d.h
+│       │   │   ├── crc32.h
+│       │   │   ├── crc32_jamcrc.h
+│       │   │   ├── crc32_mpeg2.h
+│       │   │   ├── crc32_posix.h
+│       │   │   ├── crc32_q.h
+│       │   │   ├── crc32_xfer.h
+│       │   │   ├── crc64_ecma.h
+│       │   │   ├── crc64_iso.h
+│       │   │   ├── crc8_ccitt.h
+│       │   │   ├── crc8_cdma2000.h
+│       │   │   ├── crc8_darc.h
+│       │   │   ├── crc8_dvbs2.h
+│       │   │   ├── crc8_ebu.h
+│       │   │   ├── crc8_icode.h
+│       │   │   ├── crc8_itu.h
+│       │   │   ├── crc8_j1850.h
+│       │   │   ├── crc8_j1850_zero.h
+│       │   │   ├── crc8_maxim.h
+│       │   │   ├── crc8_nrsc5.h
+│       │   │   ├── crc8_opensafety.h
+│       │   │   ├── crc8_rohc.h
+│       │   │   ├── crc8_wcdma.h
+│       │   │   ├── crc.h
+│       │   │   ├── cstring.h
+│       │   │   ├── cyclic_value.h
+│       │   │   ├── debounce.h
+│       │   │   ├── debug_count.h
+│       │   │   ├── delegate.h
+│       │   │   ├── delegate_observer.h
+│       │   │   ├── delegate_service.h
+│       │   │   ├── deprecated
+│       │   │   │   └── factory.h
+│       │   │   ├── deque.h
+│       │   │   ├── doxygen.h
+│       │   │   ├── endianness.h
+│       │   │   ├── enum_type.h
+│       │   │   ├── error_handler.h
+│       │   │   ├── exception.h
+│       │   │   ├── expected.h
+│       │   │   ├── experimental
+│       │   │   │   ├── bit_cast.h
+│       │   │   │   ├── class_traits.h
+│       │   │   │   ├── icache.h
+│       │   │   │   ├── mem_cast.h
+│       │   │   │   ├── mid_point flt (typo abs(a) should be abs(b).png
+│       │   │   │   ├── mid_point.png
+│       │   │   │   ├── mid_point ptr.png
+│       │   │   │   └── singleton.h
+│       │   │   ├── factorial.h
+│       │   │   ├── fibonacci.h
+│       │   │   ├── file_error_numbers.h
+│       │   │   ├── fixed_iterator.h
+│       │   │   ├── fixed_sized_memory_block_allocator.h
+│       │   │   ├── flags.h
+│       │   │   ├── flat_map.h
+│       │   │   ├── flat_multimap.h
+│       │   │   ├── flat_multiset.h
+│       │   │   ├── flat_set.h
+│       │   │   ├── fnv_1.h
+│       │   │   ├── format_spec.h
+│       │   │   ├── forward_list.h
+│       │   │   ├── frame_check_sequence.h
+│       │   │   ├── fsm.h
+│       │   │   ├── functional.h
+│       │   │   ├── function.h
+│       │   │   ├── function_traits.h
+│       │   │   ├── gamma.h
+│       │   │   ├── gcd.h
+│       │   │   ├── generators
+│       │   │   │   ├── fsm_generator.h
+│       │   │   │   ├── generate.bat
+│       │   │   │   ├── generate_fsm.bat
+│       │   │   │   ├── generate_largest.bat
+│       │   │   │   ├── generate_message_packet.bat
+│       │   │   │   ├── generate_message_router.bat
+│       │   │   │   ├── generate_smallest.bat
+│       │   │   │   ├── generate_type_lookup.bat
+│       │   │   │   ├── generate_type_select.bat
+│       │   │   │   ├── generate_type_traits.bat
+│       │   │   │   ├── generate_variant_pool.bat
+│       │   │   │   ├── largest_generator.h
+│       │   │   │   ├── message_packet_generator.h
+│       │   │   │   ├── message_router_generator.h
+│       │   │   │   ├── smallest_generator.h
+│       │   │   │   ├── type_lookup_generator.h
+│       │   │   │   ├── type_select_generator.h
+│       │   │   │   ├── type_traits_generator.h
+│       │   │   │   └── variant_pool_generator.h
+│       │   │   ├── generic_pool.h
+│       │   │   ├── hash.h
+│       │   │   ├── hfsm.h
+│       │   │   ├── histogram.h
+│       │   │   ├── ihash.h
+│       │   │   ├── imemory_block_allocator.h
+│       │   │   ├── index_of_type.h
+│       │   │   ├── indirect_vector.h
+│       │   │   ├── initializer_list.h
+│       │   │   ├── instance_count.h
+│       │   │   ├── integral_limits.h
+│       │   │   ├── intrusive_forward_list.h
+│       │   │   ├── intrusive_links.h
+│       │   │   ├── intrusive_list.h
+│       │   │   ├── intrusive_queue.h
+│       │   │   ├── intrusive_stack.h
+│       │   │   ├── invert.h
+│       │   │   ├── io_port.h
+│       │   │   ├── ipool.h
+│       │   │   ├── ireference_counted_message_pool.h
+│       │   │   ├── iterator.h
+│       │   │   ├── jenkins.h
+│       │   │   ├── largest.h
+│       │   │   ├── lcm.h
+│       │   │   ├── limiter.h
+│       │   │   ├── limits.h
+│       │   │   ├── list.h
+│       │   │   ├── log.h
+│       │   │   ├── macros.h
+│       │   │   ├── map.h
+│       │   │   ├── math_constants.h
+│       │   │   ├── math.h
+│       │   │   ├── mean.h
+│       │   │   ├── mem_cast.h
+│       │   │   ├── memory.h
+│       │   │   ├── memory_model.h
+│       │   │   ├── message_broker.h
+│       │   │   ├── message_bus.h
+│       │   │   ├── message.h
+│       │   │   ├── message_packet.h
+│       │   │   ├── message_router.h
+│       │   │   ├── message_router_registry.h
+│       │   │   ├── message_timer_atomic.h
+│       │   │   ├── message_timer.h
+│       │   │   ├── message_timer_interrupt.h
+│       │   │   ├── message_timer_locked.h
+│       │   │   ├── message_types.h
+│       │   │   ├── monostate.h
+│       │   │   ├── multi_array.h
+│       │   │   ├── multimap.h
+│       │   │   ├── multi_range.h
+│       │   │   ├── multiset.h
+│       │   │   ├── multi_span.h
+│       │   │   ├── multi_vector.h
+│       │   │   ├── murmur3.h
+│       │   │   ├── mutex
+│       │   │   │   ├── mutex_arm.h
+│       │   │   │   ├── mutex_clang_sync.h
+│       │   │   │   ├── mutex_cmsis_os2.h
+│       │   │   │   ├── mutex_freertos.h
+│       │   │   │   ├── mutex_gcc_sync.h
+│       │   │   │   └── mutex_std.h
+│       │   │   ├── mutex.h
+│       │   │   ├── negative.h
+│       │   │   ├── nth_type.h
+│       │   │   ├── nullptr.h
+│       │   │   ├── null_type.h
+│       │   │   ├── numeric.h
+│       │   │   ├── observer.h
+│       │   │   ├── optional.h
+│       │   │   ├── overload.h
+│       │   │   ├── packet.h
+│       │   │   ├── parameter_pack.h
+│       │   │   ├── parameter_type.h
+│       │   │   ├── pearson.h
+│       │   │   ├── permutations.h
+│       │   │   ├── placement_new.h
+│       │   │   ├── platform.h
+│       │   │   ├── poly_span.h
+│       │   │   ├── pool.h
+│       │   │   ├── power.h
+│       │   │   ├── priority_queue.h
+│       │   │   ├── private
+│       │   │   │   ├── addressof.h
+│       │   │   │   ├── bitset_legacy.h
+│       │   │   │   ├── bitset_new.h
+│       │   │   │   ├── choose_namespace.h
+│       │   │   │   ├── chrono
+│       │   │   │   │   ├── clocks.h
+│       │   │   │   │   ├── day.h
+│       │   │   │   │   ├── duration.h
+│       │   │   │   │   ├── hh_mm_ss.h
+│       │   │   │   │   ├── last_spec.h
+│       │   │   │   │   ├── month_day.h
+│       │   │   │   │   ├── month.h
+│       │   │   │   │   ├── month_weekday.h
+│       │   │   │   │   ├── operators.h
+│       │   │   │   │   ├── time_point.h
+│       │   │   │   │   ├── time_zone.h
+│       │   │   │   │   ├── weekday.h
+│       │   │   │   │   ├── year.h
+│       │   │   │   │   ├── year_month_day.h
+│       │   │   │   │   ├── year_month.h
+│       │   │   │   │   └── year_month_weekday.h
+│       │   │   │   ├── comparator_is_transparent.h
+│       │   │   │   ├── crc_implementation.h
+│       │   │   │   ├── crc_parameters.h
+│       │   │   │   ├── delegate_cpp03.h
+│       │   │   │   ├── delegate_cpp11.h
+│       │   │   │   ├── diagnostic_array_bounds_push.h
+│       │   │   │   ├── diagnostic_cxx_20_compat_push.h
+│       │   │   │   ├── diagnostic_deprecated_push.h
+│       │   │   │   ├── diagnostic_float_equal_push.h
+│       │   │   │   ├── diagnostic_format_security_push.h
+│       │   │   │   ├── diagnostic_null_dereference_push.h
+│       │   │   │   ├── diagnostic_pessimizing_move_push.h
+│       │   │   │   ├── diagnostic_pop.h
+│       │   │   │   ├── diagnostic_self_assign_overloaded_push.h
+│       │   │   │   ├── diagnostic_stringop_overread_push.h
+│       │   │   │   ├── diagnostic_uninitialized_push.h
+│       │   │   │   ├── diagnostic_unused_function_push.h
+│       │   │   │   ├── diagnostic_useless_cast_push.h
+│       │   │   │   ├── dynamic_extent.h
+│       │   │   │   ├── ivectorpointer.h
+│       │   │   │   ├── minmax_pop.h
+│       │   │   │   ├── minmax_push.h
+│       │   │   │   ├── pvoidvector.h
+│       │   │   │   ├── to_string_helper.h
+│       │   │   │   ├── tuple_element.h
+│       │   │   │   ├── tuple_size.h
+│       │   │   │   ├── variant_legacy.h
+│       │   │   │   ├── variant_select_do_operator.h
+│       │   │   │   ├── variant_select_do_visitor.h
+│       │   │   │   ├── variant_variadic.h
+│       │   │   │   └── vector_base.h
+│       │   │   ├── profiles
+│       │   │   │   ├── arduino_arm.h
+│       │   │   │   ├── armv5.h
+│       │   │   │   ├── armv5_no_stl.h
+│       │   │   │   ├── armv6.h
+│       │   │   │   ├── armv6_no_stl.h
+│       │   │   │   ├── armv7.h
+│       │   │   │   ├── armv7_no_stl.h
+│       │   │   │   ├── auto.h
+│       │   │   │   ├── clang_generic.h
+│       │   │   │   ├── clang_generic_no_stl.h
+│       │   │   │   ├── cpp03.h
+│       │   │   │   ├── cpp03_no_stl.h
+│       │   │   │   ├── cpp11.h
+│       │   │   │   ├── cpp11_no_stl.h
+│       │   │   │   ├── cpp14.h
+│       │   │   │   ├── cpp14_no_stl.h
+│       │   │   │   ├── cpp17.h
+│       │   │   │   ├── cpp17_no_stl.h
+│       │   │   │   ├── determine_builtin_support.h
+│       │   │   │   ├── determine_compiler.h
+│       │   │   │   ├── determine_compiler_language_support.h
+│       │   │   │   ├── determine_compiler_version.h
+│       │   │   │   ├── determine_development_os.h
+│       │   │   │   ├── gcc_generic.h
+│       │   │   │   ├── gcc_generic_no_stl.h
+│       │   │   │   ├── gcc_linux_x86.h
+│       │   │   │   ├── gcc_linux_x86_no_stl.h
+│       │   │   │   ├── gcc_windows_x86.h
+│       │   │   │   ├── gcc_windows_x86_no_stl.h
+│       │   │   │   ├── msvc_x86.h
+│       │   │   │   ├── msvc_x86_no_stl.h
+│       │   │   │   ├── segger_gcc_stlport.h
+│       │   │   │   ├── ticc.h
+│       │   │   │   └── ticc_no_stl.h
+│       │   │   ├── pseudo_moving_average.h
+│       │   │   ├── quantize.h
+│       │   │   ├── queue.h
+│       │   │   ├── queue_lockable.h
+│       │   │   ├── queue_mpmc_mutex.h
+│       │   │   ├── queue_spsc_atomic.h
+│       │   │   ├── queue_spsc_isr.h
+│       │   │   ├── queue_spsc_locked.h
+│       │   │   ├── radix.h
+│       │   │   ├── random.h
+│       │   │   ├── ratio.h
+│       │   │   ├── reference_counted_message.h
+│       │   │   ├── reference_counted_message_pool.h
+│       │   │   ├── reference_counted_object.h
+│       │   │   ├── reference_flat_map.h
+│       │   │   ├── reference_flat_multimap.h
+│       │   │   ├── reference_flat_multiset.h
+│       │   │   ├── reference_flat_set.h
+│       │   │   ├── rescale.h
+│       │   │   ├── result.h
+│       │   │   ├── rms.h
+│       │   │   ├── scaled_rounding.h
+│       │   │   ├── scheduler.h
+│       │   │   ├── set.h
+│       │   │   ├── shared_message.h
+│       │   │   ├── singleton_base.h
+│       │   │   ├── singleton.h
+│       │   │   ├── smallest.h
+│       │   │   ├── span.h
+│       │   │   ├── sqrt.h
+│       │   │   ├── stack.h
+│       │   │   ├── standard_deviation.h
+│       │   │   ├── state_chart.h
+│       │   │   ├── static_assert.h
+│       │   │   ├── string.h
+│       │   │   ├── stringify.h
+│       │   │   ├── string_stream.h
+│       │   │   ├── string_utilities.h
+│       │   │   ├── string_view.h
+│       │   │   ├── successor.h
+│       │   │   ├── task.h
+│       │   │   ├── threshold.h
+│       │   │   ├── timer.h
+│       │   │   ├── to_arithmetic.h
+│       │   │   ├── to_string.h
+│       │   │   ├── to_u16string.h
+│       │   │   ├── to_u32string.h
+│       │   │   ├── to_u8string.h
+│       │   │   ├── to_wstring.h
+│       │   │   ├── tuple.h
+│       │   │   ├── type_def.h
+│       │   │   ├── type_list.h
+│       │   │   ├── type_lookup.h
+│       │   │   ├── type_select.h
+│       │   │   ├── type_traits.h
+│       │   │   ├── u16format_spec.h
+│       │   │   ├── u16string.h
+│       │   │   ├── u16string_stream.h
+│       │   │   ├── u32format_spec.h
+│       │   │   ├── u32string.h
+│       │   │   ├── u32string_stream.h
+│       │   │   ├── u8format_spec.h
+│       │   │   ├── u8string.h
+│       │   │   ├── u8string_stream.h
+│       │   │   ├── unaligned_type.h
+│       │   │   ├── uncopyable.h
+│       │   │   ├── unordered_map.h
+│       │   │   ├── unordered_multimap.h
+│       │   │   ├── unordered_multiset.h
+│       │   │   ├── unordered_set.h
+│       │   │   ├── user_type.h
+│       │   │   ├── utility.h
+│       │   │   ├── variance.h
+│       │   │   ├── variant.h
+│       │   │   ├── variant_pool.h
+│       │   │   ├── vector.h
+│       │   │   ├── version.h
+│       │   │   ├── visitor.h
+│       │   │   ├── wformat_spec.h
+│       │   │   ├── wstring.h
+│       │   │   └── wstring_stream.h
+│       │   └── nlohmann
+│       │       └── json.hpp
+│       ├── tree.txt
+│       └── viatext.png
+├── include
+│   └── README
+├── lib
+│   └── README
+├── LICENSE
+├── platformio.ini
+├── README.md
+├── src
+│   └── main.cpp
+├── test
+│   └── README
+├── tree.txt
+└── viatext.png
 
-**Development Notice:** This project is **not production-ready**. It is still in active development, with interfaces, logic, and documentation subject to change.
-
-To clone with submodules:
-
-```bash
-git clone --recurse-submodules https://github.com/AltGrid/viatext-ttgo-lora32-v21
-```
-
-*The front line on the wire. The physical node in your hand.*
-
-![VIATEXT Logo](viatext.png)
-
-This is the firmware and configuration package for ViaText-compatible **[LilyGO TTGO LoRa32 V2.1](https://lilygo.cc/products/lora3)** boards.  
-It transforms a low-cost ESP32 device into a resilient, autonomous communication node — part of a text-first mesh that doesn’t rely on the cloud, smartphones, or traditional infrastructure.
-
-This repo runs on **PlatformIO**, targeting the ESP32/LoRa chipset with a focus on durability, transparency, and full Linux-side compatibility via serial links.
-
----
-
-## System Role and Identity
-
-`viatext-ttgo-lora32-v21` is a physical, field-deployable node in the ViaText mesh.  
-It sends, receives, and relays human-readable packets using the LoRa radio band, optionally augmented by GPS, OLED display, and battery status monitoring.
-
-Each node:
-- Runs lightweight C++ firmware using `viatext-core`
-- Reads/writes packets over LoRa
-- Interfaces with Linux hosts via USB serial (`/dev/ttyUSB*`)
-- Operates headless or with optional display feedback
-
-This hardware is critical in scenarios where standard infrastructure is absent or compromised. Every decision in its design supports the principles of Simplicity, Portability, and Autonomy.
-
----
-
-## Scope and Principles
-
-### Guiding Principles
-1. **Simplicity** — Understandable by anyone with basic Linux and electronics skills.  
-2. **Portability** — Operates anywhere: mountaintops, basements, backpacks.  
-3. **Autonomy** — Requires no cloud services, smartphones, or central servers.
-
-### Operational Model
-- **Transport-Agnostic** — USB and LoRa are treated equally as message ingress.  
-- **Unified Flow** — RX -> Core processing -> TX on all other transports + local echo.  
-- **Linux Integration** — `/dev/ttyUSB*` devices work with standard CLI tools.  
-- **Self-Describing Packets** — Plaintext STAMP + Markdown body, optional encryption.
-
-### Hardware Scope
-- **Required** — LilyGO TTGO LoRa32 V2.1 board, SX1276 LoRa radio, USB connection.  
-- **Optional** — OLED, GPS, LiPo battery.  
-- **Form Factor** — Credit card-sized; supports 3D-printed enclosures.
-
-### Firmware Scope
-- **Base** — PlatformIO targeting `esp32dev` / `ttgo-lora32-v21`.  
-- **Core Dependency** — `viatext-core` submodule.  
-- **Dependencies** — `LoRa.h`, `HardwareSerial`, optional `U8g2lib`, `TinyGPS++`.  
-- **CLI/Host Compatibility** — Fully interoperable with `viatext-cli`.
-
-### Relay and Routing
-- Receive -> Re-transmit -> Echo.  
-- TTL/Dup Guard prevents infinite loops.  
-- Future: Routing cache, time sync, SD store/forward.
-
-### Test Targets
-1. Send from Linux CLI -> LoRa32 via USB.  
-2. Node transmits via LoRa -> Peer node receives & echoes to USB.  
-3. Linux host sees packet via `cat /dev/ttyUSB*`.  
-
-Acceptance: intact `from`, `to`, `seq`, `ttl`.
-
----
-
-## Repository Structure
-
-This repository contains the firmware and configuration for the LilyGO TTGO LoRa32 V2.1 ViaText node.  
-It **includes the complete `viatext-core` library** as a Git submodule under `external/viatext-core`.
-
-Top-level layout:
-
-```
-viatext-ttgo-lora32-v21/
-├── external/viatext-core/       # Core ViaText C++ library (submodule)
-│   ├── AI/                      # AI-assisted docs & blueprints
-│   ├── cli/                     # Command-line wrapper for Linux
-│   ├── include/viatext/         # Public headers for core, message formats, transports
-│   ├── src/                     # Core logic implementations
-│   ├── tests/                   # Unit tests for core library
-│   ├── third_party/             # Vendored dependencies (ETL, CLI11, etc.)
-│   ├── LICENSE / README.md      # Core project license and docs
-│   └── ... (see core repo for full detail)
-├── include/                     # Project-specific headers
-├── lib/                         # Optional local libraries (e.g. TextBridge extensions)
-├── src/                         # Main firmware entry point for TTGO
-├── test/                        # Local firmware tests (if applicable)
-├── platformio.ini               # PlatformIO configuration
-├── LICENSE                      # Project license
-└── README.md                    # This file
-```
-
----
-
-## PlatformIO Setup
-
-This project is designed for **PlatformIO**, which handles toolchain, libraries, and device upload.
-
-```bash
-pio run -e ttgo-lora32-v21
-pio run -e ttgo-lora32-v21 -t upload
-pio device monitor -b 115200
-```
-
-USB-serial console shows logs and STAMP parsing.  
-On Linux, ensure `/dev/ttyUSB*` permissions are set:  
-```bash
-sudo usermod -a -G dialout $USER
-```
-
----
-
-## Project Goals
-
-- Provide a **reliable ViaText node** for field deployment.
-- Serve as **reference firmware** for future boards (Heltec, RAK, etc.).
-- Allow fully-offline operation and durable delivery.
-- Support relay behavior via simple forwarding logic.
-- Stay **entirely compatible with `viatext-core`**.
-
----
-
-## Future Features
-
-- OLED UI modes (debug / delivery / sleep)
-- Long-range test modes
-- Routing table cache
-- Time sync pulse (`vt-heartbeat`)
-- SD card store/forward
-- GPS stamping (optional)
-
----
-
-## Note on AI Assistance
-
-Parts of this README and supporting scaffolds were created with assistance from **ChatGPT** and **GitHub Copilot** to speed up drafting and formatting.  
-All logic, architectural decisions, and debugging are carried out by a human developer.  
-ViaText is built to be **human-readable** and **machine-compatible** — in both its code and its documentation.
+28 directories, 458 files
