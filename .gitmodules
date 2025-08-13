@@ -1,0 +1,3 @@
+[submodule "external/viatext-core"]
+	path = external/viatext-core
+	url = https://github.com/AltGrid/viatext-core
