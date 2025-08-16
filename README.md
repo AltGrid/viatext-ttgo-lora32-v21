@@ -111,6 +111,8 @@ parent [viatext-core](https://github.com/AltGrid/viatext-core) project.
 
 ---
 
+![VIATEXT](viatext.png)
+
 ## License
 
 MIT License. Written for clarity, portability, and long-term resilience.  
